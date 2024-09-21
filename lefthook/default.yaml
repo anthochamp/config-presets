@@ -11,7 +11,7 @@ pre-commit:
       run: npm run tsc:check -- {staged_files}
     biome:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: npx --package @biomejs/biome biome -- --error-on-warnings {staged_files}
+      run: npx --package @biomejs/biome biome -- check --error-on-warnings {staged_files}
     markdownlint:
       glob: "*.{md,mdx}"
       run: npx --package markdownlint-cli markdownlint -- {staged_files}
