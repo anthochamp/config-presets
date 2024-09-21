@@ -1,0 +1,13 @@
+{
+	"extends": [
+		"config:best-practices",
+		":automergeLinters",
+		":automergeStableNonMajor",
+		":combinePatchMinorReleases",
+		":disableRateLimiting",
+		":rebaseStalePrs"
+	],
+	"schedule": ["every weekend"],
+	"platformAutomerge": true,
+	"labels": ["dependencies"]
+}

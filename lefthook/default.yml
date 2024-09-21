@@ -1,0 +1,26 @@
+#commit-msg:
+#  commands:
+#    multiple-sign-off:
+#      run: 'test $(grep -c "^Signed-off-by: " {1}) -lt 2'
+
+pre-commit:
+  parallel: true
+  commands:
+    tsc:
+      glob: "*.{ts,tsx,cts,mts}"
+      run: tsc -noEmit -p ./tsconfig.json
+    biome:
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: biome check --error-on-warnings {staged_files}
+    halolint:
+      glob: "*Dockerfile*"
+      run: for f in {staged_files}; do docker --context default run --rm -i -v hadolint.yaml:/root/.config/hadolint.yaml hadolint/hadolint hadolint - <"$f"; done
+    markdownlint:
+      glob: "*.{md,mdx}"
+      run: markdownlint -- {staged_files}
+
+skip_output:
+  - meta
+  - success
+  - empty_summary
+  - execution
