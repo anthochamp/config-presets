@@ -8,7 +8,7 @@ pre-commit:
   commands:
     tsc:
       glob: "*.{ts,tsx,cts,mts}"
-      run: npm run types:check -- {staged_files}
+      run: npm run tsc:check -- {staged_files}
     biome:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: npx --package @biomejs/biome biome --error-on-warnings -- {staged_files}
