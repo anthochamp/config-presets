@@ -5,9 +5,14 @@
 		":automergeStableNonMajor",
 		":combinePatchMinorReleases",
 		":disableRateLimiting",
-		":rebaseStalePrs"
+		":rebaseStalePrs",
+		"mergeConfidence:all-badges"
 	],
-	"schedule": ["every weekend"],
+	"schedule": [
+		"after 10pm every weekday",
+		"before 5am every weekday",
+		"every weekend"
+	],
 	"platformAutomerge": true,
 	"labels": ["dependencies"]
 }
